@@ -21,6 +21,9 @@ body {
   /* FONTS */
 
   /* COLORS */
+  --PRIMARY-BG-COLOR: #43a047;
+  --SECONDARY-BG-COLOR: #1f5768;
+
 
   /* BORDERS */
   --BORDERS: 1px solid var(--BORDER-COLOR);
@@ -34,7 +37,10 @@ body {
   /* STANDARD MARGIN */
 }
 
+/* MAIN STYLES */
+
 .App {
+  background-color: var(--SECONDARY-BG-COLOR);
   width: 100%;
   height: 100vh;
   display: flex;
@@ -53,15 +59,10 @@ body {
   flex-grow: 1;
 }
 
-label {
-  position: absolute;
-  left: -999999999px;
-}
-
 header,
 footer {
   width: 100%;
-  background-color: #66d8f5;
+  background-color: var(--PRIMARY-BG-COLOR);
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
@@ -78,6 +79,8 @@ footer {
   bottom: 0;
 }
 
+/* GAME BOARD */
+
 .board__container {
   display: flex;
   flex-direction: row;
@@ -93,8 +96,8 @@ footer {
 
 .board {
   background-color: white;
-  border: 1px solid #333;
-  box-shadow: 0px 0px 15px gray;
+  /* border: 1px solid #333;
+  box-shadow: 0px 0px 15px gray; */
   padding: 0.25rem;
   width: var(--BOARD-WIDTH);
   height: var(--BOARD-HEIGHT);
@@ -111,6 +114,8 @@ footer {
   border: 1px solid black;
 }
 
+/* EDITOR */
+
 .editor {
   background-color: white;
   /* border: 1px solid #333; */
@@ -120,7 +125,7 @@ footer {
   grid-template-rows: 1fr 2rem;
 
   font-family: 'Source Code Pro', monospace;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
 
   border-radius: var(--EDITOR-BORDER-RADIUS);
@@ -134,6 +139,7 @@ footer {
   background-color: grey;
   color: whitesmoke;
 
+
   border-top-left-radius: var(--EDITOR-BORDER-RADIUS);
 }
 
@@ -146,8 +152,22 @@ footer {
 .editor form button {
   flex-grow: 1;
   border: none;
+  cursor: pointer;
+}
+
+.editor #hint {
   border-bottom-left-radius: var(--EDITOR-BORDER-RADIUS);
+}
+
+.editor #next {
   border-bottom-right-radius: var(--EDITOR-BORDER-RADIUS);
+  background-color: var(--PRIMARY-BG-COLOR);
+}
+
+.editor #next:disabled,
+.editor #hint:disabled {
+  background-color: rgb(197, 197, 197);
+  cursor: default
 }
 
 .editor textarea {
@@ -158,6 +178,36 @@ footer {
   line-height: inherit;
   padding-left: 0.25rem;
   border-top-right-radius: var(--EDITOR-BORDER-RADIUS);
-
   outline: none
+}
+
+.editor label {
+  position: absolute;
+  left: -999999999px;
+}
+
+.editor p {
+  position: absolute;
+}
+
+.shake {
+  animation: shake 0.5s ease;
+  outline: 1px solid red;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
 }

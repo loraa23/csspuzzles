@@ -1,0 +1,67 @@
+{
+    "levels": [
+        {
+            "name": "Background Color",
+            "style": {
+                "backgroundColor": "red"
+            },
+            "elements": [],
+            "hints": [
+                "background-color: red"
+            ]
+        },
+        {
+            "name": "Shape",
+            "style": {
+                "backgroundColor": "blue",
+                "borderRadius": "50%"
+            },
+            "elements": [],
+            "hints": [
+                "background-color: blue",
+                "border-radius: 50%"
+            ]
+        },
+        {
+            "name": "flex",
+            "style": {
+                "backgroundColor": "grey",
+                "display": "flex",
+                "gap": "1rem",
+                "justifyContent": "center"
+            },
+            "elements": [
+                {
+                    "id": 1,
+                    "style": {
+                        "backgroundColor": "yellow",
+                        "width": "50px",
+                        "height": "50px"
+                    }
+                },
+                {
+                    "id": 2,
+                    "style": {
+                        "backgroundColor": "yellow",
+                        "width": "50px",
+                        "height": "50px"
+                    }
+                },
+                {
+                    "id": 3,
+                    "style": {
+                        "backgroundColor": "yellow",
+                        "width": "50px",
+                        "height": "50px"
+                    }
+                }
+            ],
+            "hints": [
+                "background-color: grey",
+                "display: flex",
+                "gap: 1rem",
+                "justify-content: center"
+            ]
+        }
+    ]
+}

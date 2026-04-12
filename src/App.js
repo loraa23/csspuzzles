@@ -1,58 +1,29 @@
 import './App.css';
-import _ from 'lodash';
-import { useState, useEffect } from 'react';
 import Header from './Header';
-import Editor from './Editor';
-import Board from './Board';
 import Footer from './Footer';
+import Game from './Game';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [code, setCode] = useState('');
-  const [userStyle, setUserStyle] = useState({});
-  const [levelStyle, setLevelStyle] = useState({ backgroundColor: "red" });
-  const [isCorrect, setIsCorrect] = useState(false);
-
-  const handleStyleSet = () => {
-    const style = {};
-    const rules = code.split(";");
-
-    for (let rule of rules) {
-      if (!rule.trim()) continue;
-
-      const [property, value] = rule.split(":");
-
-      if (!property || !value) continue;
-
-      const trimmedProp = property.trim();
-      const trimmedValue = value.trim();
-
-      style[trimmedProp] = trimmedValue;
-    }
-
-    setUserStyle(style);
+  const [currentLevel, setCurrentLevel] = useState(JSON.parse(localStorage.getItem('level')) || 0);
+  const handleUpdateLevel = (isLast) => {
+    isLast ? setCurrentLevel(0) : setCurrentLevel(currentLevel + 1);
   }
 
   useEffect(() => {
-    const result = _.isEqual(levelStyle, userStyle);
-    setIsCorrect(result);
-  }, [userStyle, levelStyle])
+    localStorage.setItem('level', JSON.stringify(currentLevel))
+  }, [currentLevel])
 
   return (
     <div className="App">
-      <Header />
-      <main className="view">
-        <Board
-          userStyle={userStyle}
-          levelStyle={levelStyle}
-        />
-        <Editor
-          code={code}
-          setCode={setCode}
-          userStyle={userStyle}
-          handleStyleSet={handleStyleSet}
-          isCorrect={isCorrect}
-        />
-      </main>
+      <Header
+        currentLevel={currentLevel}
+        setCurrentLevel={setCurrentLevel}
+      />
+      <Game
+        handleUpdateLevel={handleUpdateLevel}
+        currentLevel={currentLevel}
+      />
       <Footer />
     </div>
   );

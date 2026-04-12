@@ -1,15 +1,32 @@
 import React from 'react'
 
-const Board = ({ userStyle, levelStyle }) => {
+const Board = ({ userStyle, levelStyle, elements }) => {
     return (
         <div className="board__container">
             <section>
-                {/* <h2>Level</h2> */}
-                <div className="board" style={levelStyle}></div>
+                <div className="board" style={levelStyle}>
+                    {elements &&
+                        elements.map(element => (
+                            <div
+                                key={element.id}
+                                style={element.style}
+                            />
+                        ))
+                    }
+                </div>
             </section>
             <section>
                 <h2>Player</h2>
-                <div className="board" style={userStyle}></div>
+                <div className="board" style={userStyle}>
+                    {elements &&
+                        elements.map(element => (
+                            <div
+                                key={element.id}
+                                style={element.style}
+                            />
+                        ))
+                    }
+                </div>
             </section>
         </div>
     )
