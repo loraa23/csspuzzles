@@ -1,7 +1,7 @@
 {
     "levels": [
         {
-            "name": "Background Color",
+            "title": "Background Color",
             "style": {
                 "backgroundColor": "red"
             },
@@ -11,7 +11,7 @@
             ]
         },
         {
-            "name": "Shape",
+            "title": "Shape",
             "style": {
                 "backgroundColor": "blue",
                 "borderRadius": "50%"
@@ -23,7 +23,7 @@
             ]
         },
         {
-            "name": "flex",
+            "title": "Flex",
             "style": {
                 "backgroundColor": "grey",
                 "display": "flex",

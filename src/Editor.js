@@ -28,11 +28,10 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
                 if (!rule.trim()) continue;
 
                 const [property, value] = rule.split(":");
+                const trimmedProp = property?.trim();
+                const trimmedValue = value?.trim();
 
-                if (!property || !value) continue;
-
-                const trimmedProp = property.trim();
-                const trimmedValue = value.trim();
+                if (!trimmedProp || !trimmedValue) continue;
 
                 const camelCaseProp = toCamelCase(trimmedProp);
 
@@ -64,7 +63,7 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
                     spellCheck="false"
                     form="editorForm"
                     id='edit'
-                    placeholder="Add code here"
+                    placeholder="Type code here..."
                     value={code}
                     onChange={(e) => { setCode(e.target.value) }}
                 />
