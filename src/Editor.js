@@ -68,7 +68,7 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
                     onChange={(e) => { setCode(e.target.value) }}
                 />
                 <form className="editorForm" id="editorForm" onSubmit={(e) => e.preventDefault()}>
-                    <label>code editor form</label>
+                    <label className="offscreen">code editor form</label>
                     <button id="hint" type="submit" onClick={handleRevealHint} disabled={!hints.length > 0}>{hints.length > 0 ? "Reveal Hint" : "No More Hints!"}</button>
                     <button id="next" type="button" onClick={() => isLastLevel ? handleNextLevel(true) : handleNextLevel(false)} disabled={!isCorrect}>
                         {isLastLevel ? "Back to Start" : "Next"}

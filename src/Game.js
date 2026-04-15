@@ -32,25 +32,23 @@ const Game = ({ handleUpdateLevel, currentLevel }) => {
     }, [userStyle, levelStyle]);
 
     return (
-        <main className="view__container">
-            <div className="view">
-                <Board
-                    userStyle={userStyle}
-                    levelStyle={levelStyle}
-                    elements={elements}
-                    title={title}
-                />
-                <Editor
-                    code={code}
-                    setCode={setCode}
-                    setUserStyle={setUserStyle}
-                    isCorrect={isCorrect}
-                    handleNextLevel={handleUpdateLevel}
-                    isLastLevel={isLastLevel}
-                    hints={hints}
-                    setHints={setHints}
-                />
-            </div>
+        <main className="game_view">
+            <Board
+                userStyle={userStyle}
+                levelStyle={levelStyle}
+                elements={elements}
+                title={title}
+            />
+            <Editor
+                code={code}
+                setCode={setCode}
+                setUserStyle={setUserStyle}
+                isCorrect={isCorrect}
+                handleNextLevel={handleUpdateLevel}
+                isLastLevel={isLastLevel}
+                hints={hints}
+                setHints={setHints}
+            />
         </main>
     )
 }

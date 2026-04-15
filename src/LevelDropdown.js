@@ -13,7 +13,7 @@ export default ({ currentLevel, setCurrentLevel, maxLevels }) => (
 
 
         <DropdownMenu.Portal>
-            <DropdownMenu.Content className="DropdownMenuContent" sideOffset={5}>
+            <DropdownMenu.Content className="DropdownMenuContent" sideOffset={12}>
                 {Array.from({ length: maxLevels }, (_, i) => (
                     <DropdownMenu.Item className="DropdownMenuItem"
                         key={i}
@@ -23,6 +23,7 @@ export default ({ currentLevel, setCurrentLevel, maxLevels }) => (
                         Level {i + 1}
                     </DropdownMenu.Item>
                 ))}
+                <DropdownMenu.Arrow />
             </DropdownMenu.Content>
         </DropdownMenu.Portal>
     </DropdownMenu.Root>
