@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Editor from './Editor';
 import Board from './Board';
 import Sidebar from './Sidebar';
+import PaintBoard from './PaintBoard';
 import levels from './data/levels.json';
 
 const Game = ({ handleUpdateLevel, currentLevel }) => {
@@ -17,6 +18,7 @@ const Game = ({ handleUpdateLevel, currentLevel }) => {
     const levelStyle = level.style;
     const isLastLevel = currentLevel === levels.levels.length - 1;
     const title = level.title;
+    const colors = level.colors;
 
     useEffect(() => {
         console.log('updating level style')
@@ -53,6 +55,7 @@ const Game = ({ handleUpdateLevel, currentLevel }) => {
                         hints={hints}
                         setHints={setHints}
                     />
+                    <PaintBoard colors={colors} />
                 </div>
             </div>
         </main>

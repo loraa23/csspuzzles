@@ -93,6 +93,30 @@ body {
   max-width: 600px;
 }
 
+.paintboard {
+  background-color: var(--BOARD-BG-COLOR);
+  border: var(--GAME-BORDER);
+  border-radius: var(--EDITOR-BORDER-RADIUS);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.color_container {
+  display: flex;
+  padding: 0.5rem;
+  gap: 10px;
+}
+
+.color_box {
+  width: 20px;
+  height: 20px;
+  border: var(--GAME-BORDER);
+  border-radius: 50%;
+  background-color: white;
+}
+
 .sidebar {
   display: none;
   padding: 1rem;
