@@ -2,6 +2,7 @@ import './App.css';
 import Header from './Header';
 import Footer from './Footer';
 import Game from './Game';
+import Sidebar from './Sidebar';
 import { useState, useEffect } from 'react';
 
 function App() {

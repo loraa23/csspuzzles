@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+button {
+  border: none;
+}
+
 /* UTILITIES */
 .offscreen {
   position: absolute;
@@ -66,16 +70,38 @@ body {
   align-items: center;
 }
 
+.main_view {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
 .game_view {
-  padding: 1rem 0;
   width: 70%;
-  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: var(--BORDER-RADIUS);
-  flex-grow: 1;
+}
+
+.game_view_container {
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.sidebar {
+  display: none;
+  padding: 1rem;
+  background-color: var(--HINT-BUTTON-COLOR);
+  border-bottom: var(--GAME-BORDER);
+  border-right: var(--GAME-BORDER);
+  border-bottom-right-radius: var(--EDITOR-BORDER-RADIUS);
+  width: 30%;
+  height: 100%;
 }
 
 header,
@@ -131,10 +157,12 @@ header h1 {
 .IconButton {
   /* width: 100%; */
   background-color: var(--HEADER-BG-COLOR);
+  color: var(--HEADER-FONT-COLOR);
   cursor: pointer;
   border-radius: var(--BORDER-RADIUS);
   border: var(--MENU-BORDER);
   padding: 0.25rem;
+  height: 30px;
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -203,11 +231,6 @@ header h1 {
 .DropdownMenuItem[data-highlighted] {
   background-color: var(--violet-9);
   color: var(--violet-1);
-}
-
-footer {
-  position: sticky;
-  bottom: 0;
 }
 
 /* GAME BOARD */
@@ -332,6 +355,23 @@ footer {
 .editor textarea::placeholder {
   color: #aaaaaa;
 }
+
+/* MEDIUM */
+@media screen and (min-width: 992px) {
+  .sidebar {
+    display: flex;
+  }
+
+  .question {
+    display: none;
+  }
+
+  footer {
+    width: 70%;
+    align-self: flex-end;
+  }
+}
+
 
 /* 
 .shake {

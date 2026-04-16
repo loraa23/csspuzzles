@@ -2,6 +2,7 @@ import _, { has } from 'lodash';
 import { useState, useEffect } from 'react';
 import Editor from './Editor';
 import Board from './Board';
+import Sidebar from './Sidebar';
 import levels from './data/levels.json';
 
 const Game = ({ handleUpdateLevel, currentLevel }) => {
@@ -32,23 +33,28 @@ const Game = ({ handleUpdateLevel, currentLevel }) => {
     }, [userStyle, levelStyle]);
 
     return (
-        <main className="game_view">
-            <Board
-                userStyle={userStyle}
-                levelStyle={levelStyle}
-                elements={elements}
-                title={title}
-            />
-            <Editor
-                code={code}
-                setCode={setCode}
-                setUserStyle={setUserStyle}
-                isCorrect={isCorrect}
-                handleNextLevel={handleUpdateLevel}
-                isLastLevel={isLastLevel}
-                hints={hints}
-                setHints={setHints}
-            />
+        <main className="main_view">
+            <Sidebar></Sidebar>
+            <div className="game_view">
+                <div className="game_view_container">
+                    <Board
+                        userStyle={userStyle}
+                        levelStyle={levelStyle}
+                        elements={elements}
+                        title={title}
+                    />
+                    <Editor
+                        code={code}
+                        setCode={setCode}
+                        setUserStyle={setUserStyle}
+                        isCorrect={isCorrect}
+                        handleNextLevel={handleUpdateLevel}
+                        isLastLevel={isLastLevel}
+                        hints={hints}
+                        setHints={setHints}
+                    />
+                </div>
+            </div>
         </main>
     )
 }
