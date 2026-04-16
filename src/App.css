@@ -68,7 +68,8 @@ body {
 
 .game_view {
   padding: 1rem 0;
-  /* margin: 1rem; */
+  width: 70%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -212,31 +213,42 @@ footer {
 /* GAME BOARD */
 .board__container {
   background-color: var(--BOARD-BG-COLOR);
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
+  width: 100%;
+  padding: 1.5rem;
   border: var(--GAME-BORDER);
   border-top-left-radius: var(--EDITOR-BORDER-RADIUS);
   border-top-right-radius: var(--EDITOR-BORDER-RADIUS);
-}
 
-.board__container section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  display: grid;
+  justify-items: center;
   align-items: center;
-  gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20px 1fr;
+  grid-template-areas:
+    ". title"
+    "computer user";
+  column-gap: 1.5rem;
 }
 
 .board {
   background-color: var(--EDITOR-BG-COLOR);
   padding: 0.25rem;
-  width: var(--BOARD-WIDTH);
-  height: var(--BOARD-HEIGHT);
-  max-width: var(--BOARD-WIDTH);
-  min-width: var(--BOARD-WIDTH);
-  max-height: var(--BOARD-HEIGHT);
-  min-height: var(--BOARD-HEIGHT);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.board__container h3 {
+  grid-area: title;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.computer {
+  grid-area: computer;
+}
+
+.user {
+  grid-area: user;
 }
 
 /* EDITOR */

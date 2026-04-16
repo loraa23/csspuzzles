@@ -15,7 +15,6 @@ const Header = ({ currentLevel, setCurrentLevel }) => {
                 />
                 <Instructions />
             </div>
-
         </header>
     )
 }
