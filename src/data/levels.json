@@ -7,7 +7,7 @@
             },
             "elements": [],
             "hints": [
-                "background-color: red"
+                "background-color: red;"
             ],
             "colors": [
                 "red"
@@ -21,8 +21,8 @@
             },
             "elements": [],
             "hints": [
-                "background-color: blue",
-                "border-radius: 50%"
+                "background-color: blue;",
+                "border-radius: 50%;"
             ],
             "colors": [
                 "blue"
@@ -63,10 +63,10 @@
                 }
             ],
             "hints": [
-                "background-color: grey",
-                "display: flex",
-                "gap: 1rem",
-                "justify-content: center"
+                "background-color: grey;",
+                "display: flex;",
+                "gap: 1rem;",
+                "justify-content: center;"
             ],
             "colors": [
                 "grey",

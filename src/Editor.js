@@ -6,14 +6,14 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
     const toCamelCase = (str) => str.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
     const handleRevealHint = () => {
         if (hints.length > 0) {
-            const nextHint = hints[0] + ";";
+            const nextHint = hints[0];
             setCode(prev => prev ? prev + "\n" + nextHint : nextHint)
         }
         else { console.log("No more hints!") }
     }
 
     useEffect(() => { // filter out hints when code is updated
-        const rules = code.split(";").map(r => r.trim()).filter(Boolean);
+        const rules = code.split(/(.*;)/).map(r => r.trim()).filter(Boolean);
         setHints(prevHints =>
             prevHints.filter(hint => !rules.some(rule => toCamelCase(rule) === toCamelCase(hint)))
         );
@@ -22,16 +22,17 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
     useEffect(() => {
         const parseStyle = () => {
             const style = {};
-            const rules = code.split(";");
+            const rules = code.match(/[^:;\n]+:\s*[^;\n]+;/g);
+
+            if (!rules) return;
+            console.log(rules);
 
             for (let rule of rules) {
-                if (!rule.trim()) continue;
+                rule = rule.slice(0, -1);
 
                 const [property, value] = rule.split(":");
                 const trimmedProp = property?.trim();
                 const trimmedValue = value?.trim();
-
-                if (!trimmedProp || !trimmedValue) continue;
 
                 const camelCaseProp = toCamelCase(trimmedProp);
 

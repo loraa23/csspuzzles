@@ -5,7 +5,7 @@ const PaintBoard = ({ colors }) => {
         <div className="paintboard">
             {
                 colors.map(color => (
-                    <div className="color_container">
+                    <div className="color_container" key={color}>
                         <div className="color_box" style={{ backgroundColor: color }} />
                         <p>{color}</p>
                     </div>
