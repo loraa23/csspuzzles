@@ -11,7 +11,7 @@ const Game = ({ handleUpdateLevel, currentLevel }) => {
 
     const [code, setCode] = useState('');
     const [userStyle, setUserStyle] = useState({});
-    const [hints, setHints] = useState([]);
+    const [currentHints, setCurrentHints] = useState([]);
     const [isCorrect, setIsCorrect] = useState(false);
 
     const elements = level.elements;
@@ -19,15 +19,16 @@ const Game = ({ handleUpdateLevel, currentLevel }) => {
     const isLastLevel = currentLevel === levels.levels.length - 1;
     const title = level.title;
     const colors = level.colors;
+    const hints = level.hints
 
     useEffect(() => {
         console.log('updating level style')
         setUserStyle({});
         setCode('');
-        setHints(level.hints);
+        setCurrentHints(hints);
         setIsCorrect(false);
 
-    }, [currentLevel])
+    }, [currentLevel, hints])
 
     useEffect(() => {
         const result = _.isEqual(levelStyle, userStyle);
@@ -53,7 +54,8 @@ const Game = ({ handleUpdateLevel, currentLevel }) => {
                         handleNextLevel={handleUpdateLevel}
                         isLastLevel={isLastLevel}
                         hints={hints}
-                        setHints={setHints}
+                        currentHints={currentHints}
+                        setCurrentHints={setCurrentHints}
                     />
                     <PaintBoard colors={colors} />
                 </div>
