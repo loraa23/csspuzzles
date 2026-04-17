@@ -49,7 +49,8 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
         const usedHints = hints.filter(hint => !currentHints.some(currentHint => currentHint === hint));
         if (!usedHints.length) return text;
 
-        const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const escapeRegex = (str) => str
+            .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
         const regex = new RegExp(`(${usedHints.map(escapeRegex).join("|")})`, "g");
         const parts = text.split(regex);
 

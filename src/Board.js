@@ -8,6 +8,7 @@ const Board = ({ userStyle, levelStyle, elements, title }) => {
                 {elements &&
                     elements.map(element => (
                         <div
+                            className="board_child"
                             key={element.id}
                             style={element.style}
                         />
@@ -18,6 +19,7 @@ const Board = ({ userStyle, levelStyle, elements, title }) => {
                 {elements &&
                     elements.map(element => (
                         <div
+                            className="board_child"
                             key={element.id}
                             style={element.style}
                         />

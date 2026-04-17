@@ -207,6 +207,7 @@ header h1 {
 }
 
 .DropdownMenuContent {
+  z-index: 10;
   /* width: 100%; */
   background-color: var(--HEADER-BG-COLOR);
   border-radius: var(--BORDER-RADIUS);
@@ -284,9 +285,18 @@ header h1 {
 
 .board {
   background-color: var(--EDITOR-BG-COLOR);
-  padding: 0.25rem;
+  padding: 0.5rem;
   width: 100%;
+  gap: 0.5rem;
   aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.board_child {
+  width: calc(100vw / 20);
+  height: calc(100vw / 20);
+  aspect-ratio: 1 / 1;
+  border: var(--GAME-BORDER);
 }
 
 .board__container h3 {
@@ -379,6 +389,8 @@ header h1 {
   pointer-events: none;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .editor_highlights {
@@ -404,6 +416,7 @@ header h1 {
   color: var(--EDITOR-FONT-COLOR);
   resize: none;
   border: none;
+  white-space: pre-wrap;
   font-family: inherit;
   font-style: inherit;
   line-height: inherit;
