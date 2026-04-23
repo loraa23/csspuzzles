@@ -50,9 +50,12 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
         if (!usedHints.length) return text;
 
         const escapeRegex = (str) => str
-            .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+
         const regex = new RegExp(`(${usedHints.map(escapeRegex).join("|")})`, "g");
-        const parts = text.split(regex);
+        const parts = text
+            .replace(/\n$/g, '\n\n')
+            .split(regex);
 
         return parts.map((part, index) => {
             const isMatch = usedHints.some(hint => toCamelCase(part) === toCamelCase(hint));

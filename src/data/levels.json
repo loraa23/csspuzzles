@@ -33,36 +33,312 @@
             "style": {
                 "backgroundColor": "grey",
                 "display": "flex",
-                "justifyContent": "center"
+                "alignItems": "center",
+                "justifyContent": "space-around"
             },
             "elements": [
                 {
                     "id": 1,
                     "style": {
-                        "backgroundColor": "yellow"
+                        "backgroundColor": "yellow",
+                        "borderRadius": "50%"
                     }
                 },
                 {
                     "id": 2,
                     "style": {
-                        "backgroundColor": "yellow"
+                        "backgroundColor": "yellow",
+                        "borderRadius": "50%"
                     }
                 },
                 {
                     "id": 3,
                     "style": {
-                        "backgroundColor": "yellow"
+                        "backgroundColor": "yellow",
+                        "borderRadius": "50%"
                     }
                 }
             ],
             "hints": [
                 "background-color: grey;",
                 "display: flex;",
-                "justify-content: center;"
+                "align-items: center;",
+                "justify-content: space-around;"
             ],
             "colors": [
                 "grey",
                 "yellow"
+            ]
+        },
+        {
+            "title": "Space Between",
+            "style": {
+                "backgroundColor": "cadetblue",
+                "display": "flex",
+                "flexDirection": "column",
+                "flexWrap": "wrap",
+                "justifyContent": "space-between",
+                "alignContent": "center"
+            },
+            "elements": [
+                {
+                    "id": 1,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 2,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 3,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 4,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 5,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 6,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 7,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 8,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                }
+            ],
+            "hints": [
+                "background-color: cadetblue;",
+                "display: flex;",
+                "flex-wrap: wrap;",
+                "flex-direction: column;",
+                "justify-content: space-between;",
+                "align-content: center;"
+            ],
+            "colors": [
+                "cadetblue",
+                "orange"
+            ]
+        },
+        {
+            "title": "Intro to Grid",
+            "style": {
+                "backgroundColor": "seashell",
+                "display": "grid",
+                "gridTemplateColumns": "1fr 1fr",
+                "justifyItems": "center",
+                "alignItems": "center"
+            },
+            "elements": [
+                {
+                    "id": 1,
+                    "style": {
+                        "backgroundColor": "tomato"
+                    }
+                },
+                {
+                    "id": 2,
+                    "style": {
+                        "backgroundColor": "steelblue"
+                    }
+                },
+                {
+                    "id": 3,
+                    "style": {
+                        "backgroundColor": "tomato"
+                    }
+                },
+                {
+                    "id": 4,
+                    "style": {
+                        "backgroundColor": "steelblue"
+                    }
+                }
+            ],
+            "hints": [
+                "background-color: seashell;",
+                "display: grid;",
+                "grid-template-columns: 1fr 1fr;",
+                "justify-items: center;",
+                "align-items: center;"
+            ],
+            "colors": [
+                "seashell",
+                "steelblue",
+                "tomato"
+            ]
+        },
+        {
+            "title": "Intro to Grid",
+            "style": {
+                "backgroundColor": "antiquewhite",
+                "display": "grid",
+                "gridTemplateColumns": "1fr 1fr 1fr",
+                "justifyItems": "center",
+                "alignContent": "space-between"
+            },
+            "elements": [
+                {
+                    "id": 1,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 2,
+                    "style": {
+                        "backgroundColor": "black"
+                    }
+                },
+                {
+                    "id": 3,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 4,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                },
+                {
+                    "id": 5,
+                    "style": {
+                        "backgroundColor": "black"
+                    }
+                },
+                {
+                    "id": 6,
+                    "style": {
+                        "backgroundColor": "orange"
+                    }
+                }
+            ],
+            "hints": [
+                "background-color: antiquewhite;",
+                "display: grid;",
+                "grid-template-columns: 1fr 1fr 1fr;",
+                "justify-items: center;",
+                "align-content: space-between;"
+            ],
+            "colors": [
+                "antiquewhite",
+                "black",
+                "orange"
+            ]
+        },
+        {
+            "title": "Border",
+            "style": {
+                "backgroundColor": "linen",
+                "border": "10px dashed palevioletred",
+                "outline": "5px solid teal"
+            },
+            "elements": [],
+            "hints": [
+                "background-color: linen;",
+                "border: 10px dashed palevioletred;",
+                "outline: 5px solid teal;"
+            ],
+            "colors": [
+                "linen",
+                "palevioletred",
+                "teal"
+            ]
+        },
+        {
+            "title": "Border",
+            "style": {
+                "backgroundColor": "olivedrab",
+                "borderRadius": "50%",
+                "border": "20px ridge darkorange",
+                "outline": "5px solid olivedrab"
+            },
+            "elements": [],
+            "hints": [
+                "background-color: olivedrab;",
+                "border-radius: 50%;",
+                "border: 20px ridge darkorange;",
+                "outline: 5px solid olivedrab;"
+            ],
+            "colors": [
+                "olivedrab",
+                "darkorange"
+            ]
+        },
+        {
+            "title": "Center Center",
+            "style": {
+                "backgroundColor": "lavenderblush",
+                "border": "50px dashed indianred",
+                "display": "flex",
+                "justifyContent": "center",
+                "alignItems": "center"
+            },
+            "elements": [
+                {
+                    "id": 1,
+                    "style": {
+                        "backgroundColor": "darkslateblue"
+                    }
+                }
+            ],
+            "hints": [
+                "background-color: lavenderblush;",
+                "display: flex;",
+                "border: 50px dashed indianred;",
+                "justify-content: center;",
+                "align-items: center;"
+            ],
+            "colors": [
+                "lavenderblush",
+                "indianred",
+                "darkslateblue"
+            ]
+        },
+        {
+            "title": "Intro to Grid",
+            "style": {
+                "backgroundColor": "skyblue",
+                "transform": "rotate(45deg) scale(0.5)",
+                "outline": "2px solid black",
+                "border": "20px double white"
+            },
+            "elements": [],
+            "hints": [
+                "background-color: skyblue;",
+                "transform: rotate(45deg) scale(0.5);",
+                "outline: 2px solid black;",
+                "border: 20px double white;"
+            ],
+            "colors": [
+                "skyblue",
+                "white",
+                "black"
             ]
         }
     ]
