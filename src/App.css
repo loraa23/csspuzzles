@@ -15,6 +15,10 @@ button {
   left: -999999999px;
 }
 
+.nowrap {
+  text-wrap: nowrap;
+}
+
 :root {
   /* FONTS */
   --PRIMARY-FONT-FAMILY: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -227,8 +231,25 @@ header h1 {
 }
 
 .instructions {
-  width: 300px;
-  height: 400px;
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  padding: 0.5rem;
+  display: flex;
+  overflow: scroll;
+  width: 350px;
+  /* height: 400px; */
+  max-height: 400px;
+  background-color: white;
+  color: black;
+}
+
+.instructions__title {
+  text-align: center;
+}
+
+.instructions__DropdownMenuItem {
+  outline: none;
+  /* letter-spacing: 1px; */
+  /* line-height: 1; */
 }
 
 .DropdownMenuContent[data-side="top"] {
