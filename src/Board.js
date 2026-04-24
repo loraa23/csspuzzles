@@ -1,31 +1,18 @@
 import React from 'react'
+import BoardView from './BoardView';
 
 const Board = ({ userStyle, levelStyle, elements, title }) => {
     return (
 
-        <article className="board__container">
-            <div className="board computer" style={levelStyle}>
-                {elements &&
-                    elements.map(element => (
-                        <div
-                            className="board_child"
-                            key={element.id}
-                            style={element.style}
-                        />
-                    ))
-                }
-            </div>
-            <div className="board user" style={userStyle}>
-                {elements &&
-                    elements.map(element => (
-                        <div
-                            className="board_child"
-                            key={element.id}
-                            style={element.style}
-                        />
-                    ))
-                }
-            </div>
+        <article className="board_container">
+            <BoardView
+                type="board_level"
+                style={levelStyle}
+                elements={elements} />
+            <BoardView
+                type="board_user"
+                style={userStyle}
+                elements={elements} />
             <h3>Your Style</h3>
         </article>
     )

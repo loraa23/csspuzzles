@@ -12,7 +12,7 @@ const QuestionDropdown = () => (
 
 
         <DropdownMenu.Portal>
-            <DropdownMenu.Content className="DropdownMenuContent instructions" sideOffset={12}>
+            <DropdownMenu.Content className="DropdownMenuContent instructions_dropdown" sideOffset={12}>
                 <DropdownMenu.Item className="instructions__DropdownMenuItem">
                     <Instructions />
                 </DropdownMenu.Item>

@@ -1,7 +1,6 @@
 const Instructions = () => (
     <article>
-        <h3 className="instructions__title">How To Play</h3>
-        <hr />
+        <h3 className="instructions_title">How To Play</h3>
         <section>
             <br />
             <h4>Gameplay:</h4>
