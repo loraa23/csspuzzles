@@ -5,8 +5,8 @@ import Instructions from "./Instructions";
 const QuestionDropdown = () => (
     <DropdownMenu.Root className="DropdownMenuRoot">
         <DropdownMenu.Trigger asChild>
-            <button className="IconButton question" aria-label="Customise options">
-                <QuestionMarkIcon />
+            <button className="help_button" aria-label="Help">
+                <QuestionMarkIcon className="QuestionMarkIcon" />
             </button>
         </DropdownMenu.Trigger>
 

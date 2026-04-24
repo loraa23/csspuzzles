@@ -8,7 +8,7 @@ const Footer = () => {
             <ul>
                 <li>
                     <img src="GitHub_Invertocat_Black_Clearspace.svg" alt="GitHub Invertocat" height={16} width={16} />
-                    <Link to='https://github.com/loraa23'>GitHub</Link>
+                    <Link to='https://github.com/loraa23/cssgames'>GitHub</Link>
                 </li>
             </ul>
 

@@ -1,18 +1,17 @@
 import React from 'react'
-import levels from './data/levels.json';
-import LevelDropdown from './LevelDropdown';
 import QuestionDropdown from './QuestionDropdown';
+import LevelSelector from './LevelSelector';
 
-const Header = ({ currentLevel, setCurrentLevel }) => {
+const Header = ({ currentLevel, selectLevel, maxLevels }) => {
     return (
         <header>
             <h1>CSS Practice</h1>
             <div className="header_items">
                 <QuestionDropdown />
-                <LevelDropdown
+                <LevelSelector
                     currentLevel={currentLevel}
-                    setCurrentLevel={setCurrentLevel}
-                    maxLevels={levels.levels.length}
+                    selectLevel={selectLevel}
+                    maxLevels={maxLevels}
                 />
 
             </div>
