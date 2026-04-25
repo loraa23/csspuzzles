@@ -14,6 +14,12 @@ button:focus {
   z-index: 3;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: #e9e9e9;
+}
+
 /* UTILITIES */
 .offscreen {
   position: absolute;
@@ -251,6 +257,7 @@ header h1 {
 }
 
 .instructions_dropdown {
+  margin-right: 0.5rem;
   padding: 0.5rem;
   overflow: scroll;
   width: 350px;

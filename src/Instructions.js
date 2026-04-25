@@ -4,18 +4,23 @@ const Instructions = () => (
         <section>
             <br />
             <h4>Gameplay:</h4>
-            <p>Match the style of the left board by using the code editor to change the style of the right board labeled "Your Style".</p>
+            <p>Match the style of the left board using the code editor to change the style of the right board labeled "Your Style".</p>
             <br />
             <h4>Editor:</h4>
             <p>
                 Type your CSS rules into the editor.
                 <span className="nowrap">(e.g. <code>background-color: red;</code>). </span>
-                If it's correct, the rule will be highlighted green.
+                <br /><br />
+                Matching rules will be highlighted <span className="highlight" style={{ color: "black" }}>green</span>.
+                <br /><br />
+                Do not use shorthand.
+                <br />
+                (e.g. use <code className="nowrap">flex-direction</code> and <code className="nowrap">flex-wrap</code> instead of <code className="nowrap">flex-flow</code>).
             </p>
             <br />
             <h4>Hints:</h4>
             <p>
-                If you get stuck, you can click the Hint button to reveal a rule. You can use as many as needed.
+                If you get stuck, you can click the <span className="nowrap" style={{ backgroundColor: "var(--HINT-BUTTON-COLOR)" }}>Reveal Hint</span> button to reveal a rule. Use as many as needed.
             </p>
             <br />
             <h4>Colors:</h4>
