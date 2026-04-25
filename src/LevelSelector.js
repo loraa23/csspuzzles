@@ -8,6 +8,7 @@ const LevelSelector = ({ currentLevel, selectLevel, maxLevels }) => {
             <button
                 className='level_back'
                 onClick={() => selectLevel(currentLevel - 1)}
+                disabled={currentLevel === 0}
             ><CaretLeftIcon /></button>
             <LevelDropdown
                 currentLevel={currentLevel}
@@ -17,6 +18,7 @@ const LevelSelector = ({ currentLevel, selectLevel, maxLevels }) => {
             <button
                 className='level_forward'
                 onClick={() => selectLevel(currentLevel + 1)}
+                disabled={currentLevel === maxLevels - 1}
             ><CaretRightIcon /></button>
         </div>
     )

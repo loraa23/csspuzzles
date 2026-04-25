@@ -184,6 +184,24 @@ header h1 {
   border-color: var(--BORDER-HOVER-COLOR);
 }
 
+.level_back:disabled,
+.level_forward:disabled {
+  /* background-color: red; */
+  color: var(--BUTTON-DISABLED-COLOR);
+  border-top-color: var(--BUTTON-DISABLED-COLOR);
+  border-bottom-color: var(--BUTTON-DISABLED-COLOR);
+}
+
+.level_back:disabled {
+  border-left-color: var(--BUTTON-DISABLED-COLOR);
+  border-right-color: white;
+}
+
+.level_forward:disabled {
+  border-left-color: white;
+  border-right-color: var(--BUTTON-DISABLED-COLOR);
+}
+
 /* DROPDOWN CONTENT*/
 .DropdownMenuContent {
   display: flex;
