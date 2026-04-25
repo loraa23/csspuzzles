@@ -125,7 +125,8 @@ header h1 {
 }
 
 .level_dropdown_button,
-.help_button {
+.help_button,
+.reset_button {
   font-family: var(--PRIMARY-FONT-FAMILY);
   letter-spacing: 1px;
   background-color: var(--HEADER-BG-COLOR);
@@ -154,7 +155,8 @@ header h1 {
 
 .level_back:hover,
 .level_forward:hover,
-.help_button:hover {
+.help_button:hover,
+.reset_button:hover {
   border-color: var(--BORDER-HOVER-COLOR);
 }
 
@@ -252,9 +254,22 @@ header h1 {
 
 .level_dropdown {
   max-width: 110px;
+  flex-direction: column;
+}
+
+.level_dropdown_items {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.reset_button {
+  justify-content: center;
+  border: var(--MENU-BORDER);
+  border-radius: var(--BORDER-RADIUS);
+  padding: 2px;
+}
+
 
 .instructions_dropdown {
   margin-right: 0.5rem;

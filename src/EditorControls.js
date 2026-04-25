@@ -21,7 +21,7 @@ const EditorControls = ({
             <button
                 className="next_button"
                 type="button"
-                onClick={() => handleNextLevel(isLastLevel)}
+                onClick={handleNextLevel}
                 disabled={!isCorrect}
             >
                 {isLastLevel ? "Back to Start" : "Next"}

@@ -38,9 +38,9 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
 
                 style[camelCaseProp] = trimmedValue;
             }
-            setUserStyle(style);
+            return style;
         }
-        parseStyle();
+        setUserStyle(parseStyle());
     }, [code, setUserStyle])
 
     const highlightText = (text) => {

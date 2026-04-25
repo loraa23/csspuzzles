@@ -2,7 +2,7 @@ import React from 'react'
 import LevelDropdown from './LevelDropdown'
 import { CaretLeftIcon, CaretRightIcon } from '@radix-ui/react-icons'
 
-const LevelSelector = ({ currentLevel, selectLevel, maxLevels }) => {
+const LevelSelector = ({ currentLevel, selectLevel, maxLevels, handleReset }) => {
     return (
         <div className='level_selector'>
             <button
@@ -14,6 +14,7 @@ const LevelSelector = ({ currentLevel, selectLevel, maxLevels }) => {
                 currentLevel={currentLevel}
                 selectLevel={selectLevel}
                 maxLevels={maxLevels}
+                handleReset={handleReset}
             />
             <button
                 className='level_forward'

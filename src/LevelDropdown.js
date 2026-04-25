@@ -2,7 +2,7 @@ import { DropdownMenu } from "radix-ui";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 
-const LevelDropdown = ({ currentLevel, selectLevel, maxLevels }) => (
+const LevelDropdown = ({ currentLevel, selectLevel, maxLevels, handleReset }) => (
     <DropdownMenu.Root className="DropdownMenuRoot">
         <DropdownMenu.Trigger asChild>
             <button className="IconButton level_dropdown_button" aria-label="Customise options">
@@ -13,19 +13,25 @@ const LevelDropdown = ({ currentLevel, selectLevel, maxLevels }) => (
 
         <DropdownMenu.Portal>
             <DropdownMenu.Content className="DropdownMenuContent level_dropdown" sideOffset={12}>
-                {Array.from({ length: maxLevels }, (_, i) => (
-                    <DropdownMenu.Item className="DropdownMenuItem"
-                        key={i}
-                        value={i}
-                        onSelect={() => selectLevel(i)}
-                    >
-                        {i + 1}
-                    </DropdownMenu.Item>
-                ))}
+                <DropdownMenu.Group className="level_dropdown_items">
+                    {Array.from({ length: maxLevels }, (_, i) => (
+                        <DropdownMenu.Item className="DropdownMenuItem"
+                            key={i}
+                            value={i}
+                            onSelect={() => selectLevel(i)}
+                        >
+                            {i + 1}
+                        </DropdownMenu.Item>
+                    ))}
+                </DropdownMenu.Group>
+                <button type="button" className="reset_button" onClick={() => {
+                    const confirmed = window.confirm("Are you sure you want to reset?\n\nThis will clear your progress and you will be sent to the beginning of the game.");
+                    if (confirmed) handleReset();
+                }}>Reset</button>
                 <DropdownMenu.Arrow />
             </DropdownMenu.Content>
         </DropdownMenu.Portal>
-    </DropdownMenu.Root>
+    </DropdownMenu.Root >
 );
 
 export default LevelDropdown;
