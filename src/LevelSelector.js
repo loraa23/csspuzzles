@@ -7,6 +7,7 @@ const LevelSelector = ({ currentLevel, selectLevel, maxLevels, handleReset }) =>
         <div className='level_selector'>
             <button
                 className='level_back'
+                aria-label='Previous level'
                 onClick={() => selectLevel(currentLevel - 1)}
                 disabled={currentLevel === 0}
             ><CaretLeftIcon /></button>
@@ -18,6 +19,7 @@ const LevelSelector = ({ currentLevel, selectLevel, maxLevels, handleReset }) =>
             />
             <button
                 className='level_forward'
+                aria-label='Next level'
                 onClick={() => selectLevel(currentLevel + 1)}
                 disabled={currentLevel === maxLevels - 1}
             ><CaretRightIcon /></button>

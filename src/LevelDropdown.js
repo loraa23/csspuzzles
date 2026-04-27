@@ -5,8 +5,9 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 const LevelDropdown = ({ currentLevel, selectLevel, maxLevels, handleReset }) => (
     <DropdownMenu.Root className="DropdownMenuRoot">
         <DropdownMenu.Trigger asChild>
-            <button className="IconButton level_dropdown_button" aria-label="Customise options">
+            <button className="IconButton level_dropdown_button">
                 Level {currentLevel + 1}
+                <span className="offscreen">, open level selector</span>
                 <ChevronDownIcon />
             </button>
         </DropdownMenu.Trigger>
@@ -19,15 +20,20 @@ const LevelDropdown = ({ currentLevel, selectLevel, maxLevels, handleReset }) =>
                             key={i}
                             value={i}
                             onSelect={() => selectLevel(i)}
+                            aria-label={`Level ${i + 1}`}
                         >
                             {i + 1}
                         </DropdownMenu.Item>
                     ))}
                 </DropdownMenu.Group>
-                <button type="button" className="reset_button" onClick={() => {
-                    const confirmed = window.confirm("Are you sure you want to reset?\n\nThis will clear your progress and you will be sent to the beginning of the game.");
-                    if (confirmed) handleReset();
-                }}>Reset</button>
+                <button
+                    aria-label="Reset Game"
+                    type="button"
+                    className="reset_button"
+                    onClick={() => {
+                        const confirmed = window.confirm("Are you sure you want to reset?\n\nThis will clear your progress and you will be sent to the beginning of the game.");
+                        if (confirmed) handleReset();
+                    }}>Reset</button>
                 <DropdownMenu.Arrow />
             </DropdownMenu.Content>
         </DropdownMenu.Portal>
