@@ -1,3 +1,639 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+button:focus {
+    z-index: 3;
+}
+
+textarea {
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+    background-color: #e9e9e9;
+}
+
+/* UTILITIES */
+.offscreen {
+    position: absolute;
+    left: -999999999px;
+}
+
+.nowrap {
+    text-wrap: nowrap;
+}
+
+:root {
+    /* FONTS */
+    --PRIMARY-FONT-FAMILY: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    /* COLORS */
+    --PRIMARY-BG-COLOR: #f4f4f0;
+    --SIDEBAR-BG-COLOR: white;
+    --HEADER-FONT-COLOR: white;
+    --HEADER-BG-COLOR: black;
+    --BORDER-HOVER-COLOR: rgb(255, 200, 0);
+    --FOOTER-FONT-COLOR: oklch(55.2% 0.016 285.938);
+    --BOARD-BG-COLOR: white;
+    --EDITOR-BG-COLOR: #e7e7e7;
+    --EDITOR-FONT-COLOR: #000000;
+    --EDITOR-LINES-COLOR: #000000;
+    --HIGHLIGHT-COLOR: #d3e9ab;
+    --BUTTON-FONT-COLOR: black;
+    --HINT-BUTTON-COLOR: rgb(255, 200, 0);
+    --HINT-BUTTON-HOVER: rgb(255, 180, 0);
+    --NEXT-BUTTON-COLOR: rgb(0, 166, 62);
+    --NEXT-BUTTON-HOVER: rgb(0, 151, 62);
+    --BUTTON-DISABLED-COLOR: #999999;
+
+    /* BORDERS */
+    --MENU-BORDER: 1px solid rgb(255, 255, 255);
+    --GAME-BORDER: 1px solid black;
+    --BORDER-RADIUS: 5px;
+    --EDITOR-BORDER-RADIUS: 5px;
+
+    /* SIZING */
+    --BOARD-WIDTH: 200px;
+    --BOARD-HEIGHT: 200px;
+
+    /* STANDARD MARGIN */
+}
+
+/* MAIN STYLES */
+#root {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: var(--PRIMARY-BG-COLOR);
+    min-height: 100vh;
+    display: flex;
+}
+
+.App {
+    font-family: var(--PRIMARY-FONT-FAMILY);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header,
+footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* HEADER */
+header {
+    background-color: var(--HEADER-BG-COLOR);
+    padding: 1rem 1rem 0.5rem 1rem;
+    color: var(--HEADER-FONT-COLOR);
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+.header_items_container {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.level_selector {
+    display: flex;
+    height: 100%;
+}
+
+.level_dropdown_button,
+.help_button,
+.reset_button {
+    font-family: var(--PRIMARY-FONT-FAMILY);
+    letter-spacing: 1px;
+    background-color: var(--HEADER-BG-COLOR);
+    color: var(--HEADER-FONT-COLOR);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.level_dropdown_button {
+    border-top: var(--MENU-BORDER);
+    border-bottom: var(--MENU-BORDER);
+}
+
+.help_button {
+    height: 100%;
+    border-radius: var(--BORDER-RADIUS);
+    border: var(--MENU-BORDER);
+    justify-content: center;
+}
+
+.QuestionMarkIcon {
+    transform: scale(1.1);
+}
+
+.level_back:hover,
+.level_forward:hover,
+.help_button:hover,
+.reset_button:hover {
+    border-color: var(--BORDER-HOVER-COLOR);
+}
+
+.level_back,
+.level_forward {
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    color: white;
+    border: var(--MENU-BORDER);
+}
+
+.level_back {
+    border-top-left-radius: var(--BORDER-RADIUS);
+    border-bottom-left-radius: var(--BORDER-RADIUS);
+}
+
+.level_forward {
+    border-top-right-radius: var(--BORDER-RADIUS);
+    border-bottom-right-radius: var(--BORDER-RADIUS);
+}
+
+.level_selector:has(.level_dropdown_button:hover) .level_back {
+    border-right: none;
+}
+
+.level_selector:has(.level_dropdown_button:hover) .level_forward {
+    border-left: none;
+}
+
+.level_dropdown_button:hover {
+    border: var(--MENU-BORDER);
+    border-color: var(--BORDER-HOVER-COLOR);
+}
+
+.level_back:disabled,
+.level_forward:disabled {
+    /* background-color: red; */
+    color: var(--BUTTON-DISABLED-COLOR);
+    border-top-color: var(--BUTTON-DISABLED-COLOR);
+    border-bottom-color: var(--BUTTON-DISABLED-COLOR);
+}
+
+.level_back:disabled {
+    border-left-color: var(--BUTTON-DISABLED-COLOR);
+    border-right-color: white;
+}
+
+.level_forward:disabled {
+    border-left-color: white;
+    border-right-color: var(--BUTTON-DISABLED-COLOR);
+}
+
+/* DROPDOWN CONTENT*/
+.DropdownMenuContent {
+    display: flex;
+    gap: 2px;
+    z-index: 10;
+    font-family: var(--PRIMARY-FONT-FAMILY);
+    background-color: var(--HEADER-BG-COLOR);
+    border-radius: var(--BORDER-RADIUS);
+    border: var(--GAME-BORDER);
+    padding: 5px;
+    box-shadow:
+        0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+        0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+    animation-duration: 400ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.DropdownMenuContent[data-side="bottom"] {
+    animation-name: slideUpAndFade;
+}
+
+.DropdownMenuItem {
+    line-height: 1;
+    color: var(--HEADER-FONT-COLOR);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    padding: 0 10px;
+    position: relative;
+    user-select: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.DropdownMenuItem[data-highlighted] {
+    background-color: var(--HINT-BUTTON-COLOR);
+    color: black;
+}
+
+.level_dropdown {
+    max-width: 110px;
+    flex-direction: column;
+}
+
+.level_dropdown_items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.reset_button {
+    justify-content: center;
+    border: var(--MENU-BORDER);
+    border-radius: var(--BORDER-RADIUS);
+    padding: 2px;
+}
+
+
+.instructions_dropdown {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    overflow: scroll;
+    width: 350px;
+    max-height: 400px;
+    background-color: white;
+    color: black;
+}
+
+.instructions_title {
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: var(--GAME-BORDER);
+}
+
+.instructions__DropdownMenuItem {
+    outline: none;
+}
+
+/* GAME */
+.main_view {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.game_view {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--BORDER-RADIUS);
+}
+
+.game_view_container {
+    padding: 1rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    display: none;
+    padding: 1rem;
+    background-color: var(--SIDEBAR-BG-COLOR);
+    border-bottom: var(--GAME-BORDER);
+    border-right: var(--GAME-BORDER);
+    border-bottom-right-radius: var(--EDITOR-BORDER-RADIUS);
+    width: 30%;
+    height: 100%;
+}
+
+/* BOARD */
+.board_container {
+    background-color: var(--BOARD-BG-COLOR);
+    width: 100%;
+    padding: 1.5rem;
+    border: var(--GAME-BORDER);
+    border-top-left-radius: var(--EDITOR-BORDER-RADIUS);
+    border-top-right-radius: var(--EDITOR-BORDER-RADIUS);
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 20px 1fr;
+    grid-template-areas:
+        ". title"
+        "level user";
+    column-gap: 1.5rem;
+}
+
+.board_container h3 {
+    font-size: 0.75rem;
+    text-wrap: nowrap;
+    grid-area: title;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.board_level {
+    grid-area: level;
+}
+
+.board_user {
+    grid-area: user;
+}
+
+/* BOARD VIEW */
+.board {
+    background-color: var(--EDITOR-BG-COLOR);
+    padding: 0.5rem;
+    width: 100%;
+    gap: 0.5rem;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.board_child {
+    width: 15px;
+    height: 15px;
+    aspect-ratio: 1 / 1;
+    border: var(--GAME-BORDER);
+}
+
+/* EDITOR */
+.editor {
+    background-color: var(--EDITOR-BG-COLOR);
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2rem 1fr;
+    grid-template-rows: 1fr 2rem;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: var(--GAME-BORDER);
+    border-top: none;
+    border-bottom-left-radius: var(--EDITOR-BORDER-RADIUS);
+    border-bottom-right-radius: var(--EDITOR-BORDER-RADIUS);
+}
+
+.line_numbers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0 0.5rem;
+    background-color: var(--EDITOR-LINES-COLOR);
+    color: var(--EDITOR-BG-COLOR);
+}
+
+/* CODE EDITOR */
+.textarea_container {
+    position: relative;
+}
+
+.backdrop {
+    position: absolute;
+    overflow: auto;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.editor_highlights {
+    padding: 0 3px;
+    color: transparent;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-wrap: nowrap;
+}
+
+.highlight {
+    padding: 0 2px;
+    color: transparent;
+    background-color: var(--HIGHLIGHT-COLOR);
+    border-radius: var(--BORDER-RADIUS);
+}
+
+.textarea_container textarea {
+    z-index: 1;
+    position: absolute;
+    background-color: transparent;
+    color: var(--EDITOR-FONT-COLOR);
+    white-space: pre-wrap;
+    font-size: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    line-height: inherit;
+    padding-left: 5px;
+    width: 100%;
+    height: 100%;
+    text-wrap: nowrap;
+}
+
+/* .textarea_container textarea:focus {
+  outline: 2px solid blue;
+} */
+
+.textarea_container textarea::placeholder {
+    color: #aaaaaa;
+}
+
+/* EDITOR CONTROLS */
+
+.editor_controls {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.hint_button,
+.next_button {
+    letter-spacing: 1px;
+    border-top: var(--GAME-BORDER);
+    cursor: pointer;
+}
+
+.hint_button {
+    border-right: var(--GAME-BORDER);
+    border-bottom-left-radius: var(--EDITOR-BORDER-RADIUS);
+    background-color: var(--HINT-BUTTON-COLOR);
+    color: var(--BUTTON-FONT-COLOR);
+}
+
+.hint_button:hover {
+    background-color: var(--HINT-BUTTON-HOVER);
+}
+
+.next_button {
+    border-bottom-right-radius: var(--EDITOR-BORDER-RADIUS);
+    background-color: var(--NEXT-BUTTON-COLOR);
+    color: var(--BUTTON-FONT-COLOR);
+}
+
+.next_button:hover {
+    background-color: var(--NEXT-BUTTON-HOVER);
+}
+
+.next_button:disabled,
+.hint_button:disabled {
+    background-color: var(--BUTTON-DISABLED-COLOR);
+    cursor: not-allowed;
+    color: var(--EDITOR-FONT-COLOR)
+}
+
+/* PAINT BOARD */
+.paintboard {
+    background-color: var(--BOARD-BG-COLOR);
+    border: var(--GAME-BORDER);
+    border-radius: var(--EDITOR-BORDER-RADIUS);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.color_container {
+    display: flex;
+    padding: 0.5rem;
+    gap: 10px;
+}
+
+.color_box {
+    width: 20px;
+    height: 20px;
+    border: var(--GAME-BORDER);
+    border-radius: 50%;
+    background-color: white;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--PRIMARY-BG-COLOR);
+    padding-bottom: 1.5rem;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+footer ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+footer li {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+footer li a {
+    text-decoration: none;
+    color: var(--FOOTER-FONT-COLOR);
+}
+
+/* ANIMATIONS */
+@keyframes slideUpAndFade {
+    from {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* MEDIA QUERIES */
+/* SMALL */
+@media screen and (min-width: 576px) {
+    .board_child {
+        width: 30px;
+        height: 30px;
+    }
+
+    .board_container h3 {
+        font-size: 1rem;
+    }
+
+}
+
+/* MEDIUM */
+@media screen and (min-width: 992px) {
+    .sidebar {
+        display: flex;
+    }
+
+    .help_button {
+        display: none;
+    }
+
+    footer {
+        width: 70%;
+        align-self: flex-end;
+    }
+
+    .board_child {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* LARGE */
+@media screen and (min-width: 992px) {}
+
+/* XL */
+@media screen and (min-width: 1200px) {}
+
+
+/* 
+.shake {
+  animation: shake 0.5s ease;
+  outline: 1px solid red;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+} */
