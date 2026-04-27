@@ -391,6 +391,7 @@ header h1 {
     background-color: var(--EDITOR-BG-COLOR);
     display: grid;
     width: 100%;
+    height: 200px;
     grid-template-columns: 2rem 1fr;
     grid-template-rows: 1fr 2rem;
     font-family: 'Source Code Pro', monospace;
@@ -403,12 +404,14 @@ header h1 {
 }
 
 .line_numbers {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     padding: 0 0.5rem;
     background-color: var(--EDITOR-LINES-COLOR);
     color: var(--EDITOR-BG-COLOR);
+    overflow: hidden;
 }
 
 /* CODE EDITOR */

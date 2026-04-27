@@ -1,15 +1,4 @@
-import { useRef } from "react";
-
-const CodeEditor = ({ code, setCode, highlightText }) => {
-    const textareaRef = useRef(null);
-    const highlightsRef = useRef(null);
-
-    const handleScroll = () => {
-        if (!textareaRef.current || !highlightsRef.current) return;
-
-        highlightsRef.current.scrollTop = textareaRef.current.scrollTop;
-        highlightsRef.current.scrollLeft = textareaRef.current.scrollLeft;
-    };
+const CodeEditor = ({ code, setCode, highlightText, highlightsRef, textareaRef, handleScroll }) => {
 
     return (
         <div className="textarea_container">

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import LineNumbers from './LineNumbers';
 import CodeEditor from './CodeEditor';
 import EditorControls from './EditorControls';
@@ -68,13 +68,32 @@ const Editor = ({ code, setCode, isCorrect, handleNextLevel, isLastLevel, hints,
         });
     };
 
+    const textareaRef = useRef(null);
+    const highlightsRef = useRef(null);
+    const lineNumbersRef = useRef(null);
+
+    const handleScroll = () => {
+        if (!textareaRef.current) return;
+
+        const scrollTop = textareaRef.current.scrollTop;
+
+        if (highlightsRef.current) { highlightsRef.current.scrollTop = scrollTop; }
+        if (lineNumbersRef.current) { lineNumbersRef.current.scrollTop = scrollTop; }
+    };
+
     return (
         <div className="editor">
-            <LineNumbers />
+            <LineNumbers
+                code={code}
+                lineNumbersRef={lineNumbersRef}
+            />
             <CodeEditor
                 code={code}
                 setCode={setCode}
                 highlightText={highlightText}
+                highlightsRef={highlightsRef}
+                textareaRef={textareaRef}
+                handleScroll={handleScroll}
             />
             <EditorControls
                 handleRevealHint={handleRevealHint}
