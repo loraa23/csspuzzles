@@ -1,7 +1,7 @@
 {
   "name": "csspuzzles",
   "version": "0.1.0",
-  "homepage": "https://loraa23.github.io/csspuzzles",
+  "homepage": "https://loraa23.github.io/csspuzzles/",
   "private": true,
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.16",
