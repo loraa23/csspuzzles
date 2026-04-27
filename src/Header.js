@@ -5,7 +5,7 @@ import LevelSelector from './LevelSelector';
 const Header = ({ currentLevel, selectLevel, maxLevels, handleReset }) => {
     return (
         <header>
-            <h1>CSS Practice</h1>
+            <h1>CSS Puzzles</h1>
             <div className="header_items_container">
                 <QuestionDropdown />
                 <LevelSelector
