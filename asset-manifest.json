@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/csspuzzles/static/css/main.40905248.css",
-    "main.js": "/csspuzzles/static/js/main.85ae562d.js",
+    "main.css": "/csspuzzles/static/css/main.3bf16e73.css",
+    "main.js": "/csspuzzles/static/js/main.e8e25719.js",
+    "static/media/GitHub_Invertocat_Black_Clearspace.svg": "/csspuzzles/static/media/GitHub_Invertocat_Black_Clearspace.ed6fff9fb95322b76c968937feb41f81.svg",
     "index.html": "/csspuzzles/index.html",
-    "main.40905248.css.map": "/csspuzzles/static/css/main.40905248.css.map",
-    "main.85ae562d.js.map": "/csspuzzles/static/js/main.85ae562d.js.map"
+    "main.3bf16e73.css.map": "/csspuzzles/static/css/main.3bf16e73.css.map",
+    "main.e8e25719.js.map": "/csspuzzles/static/js/main.e8e25719.js.map"
   },
   "entrypoints": [
-    "static/css/main.40905248.css",
-    "static/js/main.85ae562d.js"
+    "static/css/main.3bf16e73.css",
+    "static/js/main.e8e25719.js"
   ]
 }
