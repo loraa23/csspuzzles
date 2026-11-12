@@ -302,8 +302,8 @@ header h1 {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-grow: 1;
+    height: 80%;
 }
 
 .game_view {
@@ -330,7 +330,7 @@ header h1 {
     border-right: var(--GAME-BORDER);
     border-bottom-right-radius: var(--EDITOR-BORDER-RADIUS);
     width: 30%;
-    height: 100%;
+    overflow: scroll;
 }
 
 /* BOARD */
@@ -553,7 +553,7 @@ footer ul {
 
 footer li {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 2px;
 }
 
